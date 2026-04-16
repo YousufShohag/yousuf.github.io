@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yousuf Shohag | Portfolio</title>
-  <meta name="description" content="Portfolio of Yousuf Shohag, Coordinator at SiSCOTEK, Laravel Developer, Graphics Designer, and Figma Designer." />
+  <title>Yousuf Patwari Shohag | Portfolio</title>
+  <meta name="description" content="Portfolio of Yousuf Patwari Shohag, Coordinator at SiSCOTEK, Laravel Developer, Graphics Designer, and Figma Designer." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -90,34 +90,67 @@
   </style>
 </head>
 <body class="text-slate-100 font-sans antialiased selection:bg-brand-400/30">
-  <div class="relative overflow-hidden grid-bg">
+  <div class="relative  grid-bg">
     <div class="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl animate-glow"></div>
     <div class="absolute top-32 -right-16 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl animate-glow"></div>
 
     <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/60 backdrop-blur-xl">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
-          <a href="#home" class="flex items-center gap-3">
-            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-cyan-300 text-sm font-extrabold text-slate-950 shadow-lg shadow-brand-500/20">YS</div>
-            <div>
-              <p class="text-base font-bold tracking-wide">Yousuf Shohag</p>
-              <p class="text-xs text-slate-400">Coordinator • Developer • Designer</p>
-            </div>
-          </a>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- TOP BAR -->
+    <div class="flex items-center justify-between py-4">
 
-          <div class="md:hidden flex items-center justify-between">
-            <button id="menuBtn" class="p-2 rounded-lg border border-white/10 bg-white/5">☰</button>
-          </div>
-
-          <nav id="menu" class="hidden w-full md:flex md:w-auto md:flex-wrap md:items-center md:gap-3 text-sm text-slate-300">
-            <a href="#about" class="block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">About</a>
-            <a href="#projects" class="block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">Projects</a>
-            <a href="#skills" class="block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">Skills</a>
-            <a href="#contact" class="block rounded-full bg-white/5 px-4 py-2 font-medium ring-1 ring-white/10 transition hover:bg-white/10">Contact</a>
-          </nav>
+      <!-- LEFT: Logo + Info -->
+      <a href="#home" class="flex min-w-0 items-center gap-3">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-cyan-300 text-sm font-extrabold text-slate-950 shadow-lg shadow-brand-500/20 overflow-hidden">
+          <img src="Yousuf Pass 2.jpg" alt="Profile" class="h-full w-full object-cover" />
         </div>
-      </div>
-    </header>
+
+        <div class="min-w-0">
+          <p class="truncate text-sm font-bold sm:text-base">
+            Yousuf Patwari Shohag
+          </p>
+          <p class="truncate whitespace-nowrap text-[11px] text-slate-400 sm:text-xs">
+            Coordinator • Developer • Designer
+          </p>
+        </div>
+      </a>
+
+      <!-- RIGHT: Toggle Button -->
+      <button id="menuBtn" class="ml-3 rounded-lg border border-white/10 bg-white/5 p-2 md:hidden">
+        ☰
+      </button>
+
+      <!-- DESKTOP MENU -->
+      <nav class="hidden md:flex md:items-center md:gap-3 text-sm text-slate-300">
+        <a href="#about" class="rounded-full px-3 py-2 hover:bg-white/5 hover:text-white">About</a>
+        <a href="#projects" class="rounded-full px-3 py-2 hover:bg-white/5 hover:text-white">Projects</a>
+        <a href="#skills" class="rounded-full px-3 py-2 hover:bg-white/5 hover:text-white">Skills</a>
+        <a href="#contact" class="rounded-full bg-white/5 px-4 py-2 hover:bg-white/10">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MOBILE RIGHT SIDEBAR -->
+  <nav id="menu"
+    class="fixed top-0 right-0 z-50 h-full w-64 translate-x-full border-l border-white/10 bg-slate-950 p-6 text-sm text-slate-300 transition-transform duration-300 md:hidden">
+
+    <div class="mb-6 flex items-center justify-between">
+      <span class="font-semibold text-white">Menu</span>
+      <button id="closeMenu" class="rounded-lg border border-white/10 bg-white/5 px-2 py-1">✕</button>
+    </div>
+
+    <div class="space-y-2">
+      <a href="#about" class="block rounded-xl px-3 py-2 hover:bg-white/5">About</a>
+      <a href="#projects" class="block rounded-xl px-3 py-2 hover:bg-white/5">Projects</a>
+      <a href="#skills" class="block rounded-xl px-3 py-2 hover:bg-white/5">Skills</a>
+      <a href="#contact" class="block rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10">Contact</a>
+    </div>
+  </nav>
+
+  <!-- OVERLAY -->
+  <div id="overlay" class="fixed inset-0 z-40 hidden bg-black/50 md:hidden"></div>
+</header>
 
     <section id="home" class="relative">
       <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
@@ -132,7 +165,7 @@
           </h1>
 
           <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-            I’m <span class="font-semibold text-white">Yousuf Shohag</span>, a Coordinator at <span class="font-semibold text-white">SiSCOTEK</span> with a Bachelor of Science degree from Uttara University. I coordinate projects and initiatives while also building Laravel applications, crafting graphics, and designing modern Figma interfaces.
+            I’m <span class="font-semibold text-white">Yousuf Patwari Shohag</span>, a Coordinator at <span class="font-semibold text-white">SiSCOTEK</span> with a Bachelor of Science degree from Uttara University. I coordinate projects and initiatives while also building Laravel applications, crafting graphics, and designing modern Figma interfaces.
           </p>
 
           <div class="mt-8 flex flex-wrap gap-4">
@@ -163,9 +196,11 @@
 
             <div class="relative">
               <div class="flex items-center gap-4">
-                <div class="flex h-20 w-20 items-center justify-center rounded-[28px] bg-gradient-to-br from-brand-400 to-cyan-300 text-2xl font-black text-slate-950 shadow-xl shadow-brand-700/20">YS</div>
+                <div class="flex h-20 w-20 items-center justify-center rounded-[28px] bg-gradient-to-br from-brand-400 to-cyan-300 shadow-xl shadow-brand-700/20 overflow-hidden">
+                  <img src="Yousuf Pass 2.jpg" alt="Profile" class="h-full w-full object-cover" />
+                </div>
                 <div>
-                  <h2 class="text-2xl font-bold">Yousuf Shohag</h2>
+                  <h2 class="text-2xl font-bold">Yousuf Patwari Shohag</h2>
                   <p class="text-sm font-medium text-cyan-200">Coordinator at SiSCOTEK</p>
                 </div>
               </div>
@@ -360,11 +395,12 @@
 
   <footer class="border-t border-white/10 py-8 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      © 2026 Yousuf Shohag. Built with Tailwind CSS for GitHub Pages.
+      © 2026 Yousuf Patwari Shohag. Built with Tailwind CSS for GitHub Pages.
     </div>
   </footer>
 
   <script>
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -376,11 +412,28 @@
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
+  const closeMenu = document.getElementById('closeMenu');
+  const menu = document.getElementById('menu');
+  const overlay = document.getElementById('overlay');
 
-    menuBtn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
+    function openMenu() {
+    menu.classList.remove('translate-x-full');
+    overlay.classList.remove('hidden');
+  }
+
+  function closeMenuFn() {
+    menu.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeMenu.addEventListener('click', closeMenuFn);
+  overlay.addEventListener('click', closeMenuFn);
+
+  // Auto close when clicking menu links
+  document.querySelectorAll('#menu a').forEach(link => {
+    link.addEventListener('click', closeMenuFn);
+  });
   </script>
 </body>
 </html>

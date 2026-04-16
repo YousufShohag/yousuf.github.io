@@ -90,24 +90,22 @@
   </style>
 </head>
 <body class="text-slate-100 font-sans antialiased selection:bg-brand-400/30">
-  <div class="relative  grid-bg">
+  <div class="relative overflow-hidden grid-bg">
     <div class="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl animate-glow"></div>
     <div class="absolute top-32 -right-16 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl animate-glow"></div>
 
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/60 backdrop-blur-xl">
+<header id="header" class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl transition-all duration-300">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    
-    <!-- TOP BAR -->
-    <div class="flex items-center justify-between py-4">
+    <div class="flex items-center justify-between py-3 sm:py-4">
 
-      <!-- LEFT: Logo + Info -->
+      <!-- Left side: logo + info -->
       <a href="#home" class="flex min-w-0 items-center gap-3">
-        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-cyan-300 text-sm font-extrabold text-slate-950 shadow-lg shadow-brand-500/20 overflow-hidden">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand-400 to-cyan-300 shadow-lg shadow-brand-500/20">
           <img src="Yousuf Pass 2.jpg" alt="Profile" class="h-full w-full object-cover" />
         </div>
 
         <div class="min-w-0">
-          <p class="truncate text-sm font-bold sm:text-base">
+          <p class="truncate text-sm font-bold tracking-wide text-white sm:text-base">
             Yousuf Patwari Shohag
           </p>
           <p class="truncate whitespace-nowrap text-[11px] text-slate-400 sm:text-xs">
@@ -116,40 +114,60 @@
         </div>
       </a>
 
-      <!-- RIGHT: Toggle Button -->
-      <button id="menuBtn" class="ml-3 rounded-lg border border-white/10 bg-white/5 p-2 md:hidden">
-        ☰
+      <!-- Right side: mobile toggle -->
+      <button
+        id="menuBtn"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        class="ml-3 inline-flex shrink-0 items-center justify-center rounded-xl border border-white/20 bg-slate-900/80 p-2.5 text-white shadow-lg shadow-black/40 backdrop-blur-md transition hover:bg-slate-800/90 md:hidden"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
       </button>
 
-      <!-- DESKTOP MENU -->
-      <nav class="hidden md:flex md:items-center md:gap-3 text-sm text-slate-300">
-        <a href="#about" class="rounded-full px-3 py-2 hover:bg-white/5 hover:text-white">About</a>
-        <a href="#projects" class="rounded-full px-3 py-2 hover:bg-white/5 hover:text-white">Projects</a>
-        <a href="#skills" class="rounded-full px-3 py-2 hover:bg-white/5 hover:text-white">Skills</a>
-        <a href="#contact" class="rounded-full bg-white/5 px-4 py-2 hover:bg-white/10">Contact</a>
+      <!-- Desktop menu -->
+      <nav class="hidden items-center gap-3 text-sm text-slate-300 md:flex">
+        <a href="#about" class="rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">About</a>
+        <a href="#projects" class="rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">Projects</a>
+        <a href="#skills" class="rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">Skills</a>
+        <a href="#contact" class="rounded-full bg-white/5 px-4 py-2 font-medium ring-1 ring-white/10 transition hover:bg-white/10">Contact</a>
       </nav>
     </div>
   </div>
 
-  <!-- MOBILE RIGHT SIDEBAR -->
-  <nav id="menu"
-    class="fixed top-0 right-0 z-50 h-full w-64 translate-x-full border-l border-white/10 bg-slate-950 p-6 text-sm text-slate-300 transition-transform duration-300 md:hidden">
+  <!-- Mobile overlay -->
+  <div id="overlay" class="pointer-events-none fixed inset-0 z-40 bg-slate-950/85 opacity-0 backdrop-blur-sm transition duration-300 md:hidden"></div>
 
-    <div class="mb-6 flex items-center justify-between">
-      <span class="font-semibold text-white">Menu</span>
-      <button id="closeMenu" class="rounded-lg border border-white/10 bg-white/5 px-2 py-1">✕</button>
+  <!-- Mobile menu -->
+  <nav
+    id="mobileMenu"
+    class="fixed right-0 top-0 z-50 flex h-screen w-[85%] max-w-[320px] translate-x-full flex-col border-l border-white/10 bg-slate-950/95 shadow-2xl shadow-black/50 transition-transform duration-300 ease-in-out md:hidden"
+  >
+    <div class="flex items-center justify-between border-b border-white/10 px-5 py-5">
+      <span class="text-lg font-semibold text-white">Menu</span>
+
+      <button
+        id="closeMenu"
+        type="button"
+        aria-label="Close menu"
+        class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 p-2 text-slate-300 transition hover:bg-white/10 hover:text-white"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
     </div>
 
-    <div class="space-y-2">
-      <a href="#about" class="block rounded-xl px-3 py-2 hover:bg-white/5">About</a>
-      <a href="#projects" class="block rounded-xl px-3 py-2 hover:bg-white/5">Projects</a>
-      <a href="#skills" class="block rounded-xl px-3 py-2 hover:bg-white/5">Skills</a>
-      <a href="#contact" class="block rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10">Contact</a>
+    <div class="flex-1 space-y-2 px-5 py-6 text-base text-slate-300">
+      <a href="#about" class="block rounded-2xl px-4 py-3 transition hover:bg-white/5 hover:text-white">About</a>
+      <a href="#projects" class="block rounded-2xl px-4 py-3 transition hover:bg-white/5 hover:text-white">Projects</a>
+      <a href="#skills" class="block rounded-2xl px-4 py-3 transition hover:bg-white/5 hover:text-white">Skills</a>
+      <a href="#contact" class="block rounded-2xl bg-white/5 px-4 py-3 font-medium ring-1 ring-white/10 transition hover:bg-white/10 hover:text-white">Contact</a>
     </div>
   </nav>
-
-  <!-- OVERLAY -->
-  <div id="overlay" class="fixed inset-0 z-40 hidden bg-black/50 md:hidden"></div>
 </header>
 
     <section id="home" class="relative">
@@ -395,7 +413,7 @@
 
   <footer class="border-t border-white/10 py-8 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      © 2026 Yousuf Patwari Shohag. Built with Tailwind CSS for GitHub Pages.
+      © 2026 Yousuf Patwari Shohag.
     </div>
   </footer>
 
@@ -411,28 +429,42 @@
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
   const closeMenu = document.getElementById('closeMenu');
-  const menu = document.getElementById('menu');
+  const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('overlay');
 
-    function openMenu() {
-    menu.classList.remove('translate-x-full');
-    overlay.classList.remove('hidden');
+function openMenu() {
+    mobileMenu.classList.remove('translate-x-full');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('overflow-hidden');
   }
 
   function closeMenuFn() {
-    menu.classList.add('translate-x-full');
-    overlay.classList.add('hidden');
+    mobileMenu.classList.add('translate-x-full');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('overflow-hidden');
   }
 
   menuBtn.addEventListener('click', openMenu);
   closeMenu.addEventListener('click', closeMenuFn);
   overlay.addEventListener('click', closeMenuFn);
 
-  // Auto close when clicking menu links
-  document.querySelectorAll('#menu a').forEach(link => {
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
     link.addEventListener('click', closeMenuFn);
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.remove('bg-slate-950/70');
+      header.classList.add('bg-slate-950/95', 'shadow-lg', 'shadow-black/20');
+    } else {
+      header.classList.remove('bg-slate-950/95', 'shadow-lg', 'shadow-black/20');
+      header.classList.add('bg-slate-950/70');
+    }
   });
   </script>
 </body>

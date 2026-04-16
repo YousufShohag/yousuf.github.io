@@ -3,765 +3,384 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Siscotek | Portfolio</title>
-  <meta name="description" content="Responsive personal portfolio website for GitHub Pages." />
+  <title>Yousuf Shohag | Portfolio</title>
+  <meta name="description" content="Portfolio of Yousuf Shohag, Coordinator at SiSCOTEK, Laravel Developer, Graphics Designer, and Figma Designer." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          },
+          animation: {
+            floaty: 'floaty 6s ease-in-out infinite',
+            glow: 'glow 4s ease-in-out infinite',
+            fadeup: 'fadeup 0.8s ease forwards'
+          },
+          keyframes: {
+            floaty: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' }
+            },
+            glow: {
+              '0%, 100%': { opacity: '.55', transform: 'scale(1)' },
+              '50%': { opacity: '.9', transform: 'scale(1.08)' }
+            },
+            fadeup: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #081120;
-      --bg-soft: rgba(255, 255, 255, 0.05);
-      --card: rgba(255, 255, 255, 0.08);
-      --card-border: rgba(255, 255, 255, 0.12);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --primary: #7c3aed;
-      --secondary: #06b6d4;
-      --accent: #f59e0b;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius: 24px;
-      --maxw: 1180px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(124, 58, 237, 0.32), transparent 28%),
-        radial-gradient(circle at top right, rgba(6, 182, 212, 0.22), transparent 24%),
-        radial-gradient(circle at bottom center, rgba(245, 158, 11, 0.12), transparent 20%),
-        linear-gradient(135deg, #050b16 0%, #081120 55%, #0d1b2f 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
+        radial-gradient(circle at top left, rgba(59,130,246,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(45,212,191,.12), transparent 24%),
+        linear-gradient(180deg, #030712 0%, #0f172a 55%, #111827 100%);
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 90%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--maxw), calc(100% - 32px));
-      margin-inline: auto;
-    }
-
-    .glass {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-    }
-
-    .section {
-      padding: 96px 0;
-    }
-
-    .section-head {
-      max-width: 620px;
-      margin-bottom: 34px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #dbeafe;
-      font-size: 0.88rem;
-      margin-bottom: 16px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      box-shadow: 0 0 18px rgba(6,182,212,0.8);
-    }
-
-    h1, h2, h3, h4 {
-      line-height: 1.1;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 14px;
-    }
-
-    p {
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding: 18px 0;
-      background: linear-gradient(to bottom, rgba(5,11,22,0.88), rgba(5,11,22,0.28));
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 18px;
-      border-radius: 999px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-
-    .logo-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: 0 10px 30px rgba(124,58,237,0.38);
-      font-weight: 800;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: #e2e8f0;
-      font-size: 0.95rem;
-      transition: 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: white;
-      transform: translateY(-1px);
-    }
-
-    .hero {
-      padding: 54px 0 80px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 34px;
-      align-items: center;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(2.8rem, 6vw, 5.6rem);
-      margin-bottom: 18px;
-      letter-spacing: -0.04em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 35%, #67e8f9 70%, #fde68a 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-copy p {
-      max-width: 700px;
-      font-size: 1.06rem;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border-radius: 16px;
-      font-weight: 700;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: 0 16px 35px rgba(124, 58, 237, 0.35);
-    }
-
-    .btn-secondary {
-      border-color: rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      color: #f8fafc;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 650px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 20px;
-    }
-
-    .stat h3 {
-      font-size: 1.65rem;
-      margin-bottom: 4px;
-    }
-
-    .stat p {
-      font-size: 0.92rem;
-      color: #dbeafe;
-    }
-
-    .hero-card {
-      position: relative;
-      padding: 26px;
-      border-radius: 30px;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
+    .grid-bg::before {
       content: "";
       position: absolute;
-      inset: -1px;
-      background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(6,182,212,0.4), rgba(245,158,11,0.22));
-      z-index: -1;
-      border-radius: inherit;
-      opacity: 0.9;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 82%);
+      pointer-events: none;
     }
-
-    .profile-box {
-      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-      padding: 26px;
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,0.12);
+    .glass {
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.1);
     }
-
-    .profile-photo {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 24px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, rgba(124,58,237,0.45), rgba(6,182,212,0.35));
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all .8s ease;
     }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .badge {
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 0.88rem;
-      color: #e2e8f0;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .info-card,
-    .skill-card,
-    .project-card,
-    .contact-card {
-      padding: 26px;
-      border-radius: var(--radius);
-    }
-
-    .info-list {
-      display: grid;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .info-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .info-item span:first-child {
-      color: #cbd5e1;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill-card h3,
-    .project-card h3,
-    .contact-card h3 {
-      margin-bottom: 12px;
-      font-size: 1.25rem;
-    }
-
-    .skill-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      font-weight: 800;
-      background: linear-gradient(135deg, rgba(124,58,237,0.26), rgba(6,182,212,0.22));
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-thumb {
-      height: 180px;
-      border-radius: 20px;
-      margin-bottom: 18px;
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
-      color: white;
-      font-weight: 800;
-      background: linear-gradient(135deg, rgba(124,58,237,0.7), rgba(6,182,212,0.7));
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 16px 0 18px;
-    }
-
-    .project-tags span {
-      font-size: 0.82rem;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #dbeafe;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .project-links a,
-    .contact-links a {
-      padding: 11px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-weight: 600;
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 22px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .contact-item {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    footer {
-      padding: 32px 0 50px;
-      text-align: center;
-      color: #94a3b8;
-    }
-
-    @media (max-width: 1080px) {
-      .hero-grid,
-      .about-grid,
-      .contact-wrap,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .container {
-        width: min(var(--maxw), calc(100% - 20px));
-      }
-
-      nav {
-        padding: 12px 0;
-      }
-
-      .nav-wrap {
-        border-radius: 24px;
-        padding: 16px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        gap: 14px;
-      }
-
-      .hero {
-        padding-top: 26px;
-      }
-
-      .hero-copy h1 {
-        font-size: clamp(2.2rem, 11vw, 3.6rem);
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 76px 0;
-      }
-
-      .btn,
-      .project-links a,
-      .contact-links a {
-        width: 100%;
-      }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-<body>
-  <nav>
-    <div class="container">
-      <div class="nav-wrap glass">
-        <a href="#home" class="logo">
-          <span class="logo-mark">S</span>
-          <span>Siscotek</span>
-        </a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+<body class="text-slate-100 font-sans antialiased selection:bg-brand-400/30">
+  <div class="relative overflow-hidden grid-bg">
+    <div class="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl animate-glow"></div>
+    <div class="absolute top-32 -right-16 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl animate-glow"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/60 backdrop-blur-xl">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
+          <a href="#home" class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-cyan-300 text-sm font-extrabold text-slate-950 shadow-lg shadow-brand-500/20">YS</div>
+            <div>
+              <p class="text-base font-bold tracking-wide">Yousuf Shohag</p>
+              <p class="text-xs text-slate-400">Coordinator • Developer • Designer</p>
+            </div>
+          </a>
+
+          <div class="md:hidden flex items-center justify-between">
+            <button id="menuBtn" class="p-2 rounded-lg border border-white/10 bg-white/5">☰</button>
+          </div>
+
+          <nav id="menu" class="hidden w-full md:flex md:w-auto md:flex-wrap md:items-center md:gap-3 text-sm text-slate-300">
+            <a href="#about" class="block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">About</a>
+            <a href="#projects" class="block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">Projects</a>
+            <a href="#skills" class="block rounded-full px-3 py-2 transition hover:bg-white/5 hover:text-white">Skills</a>
+            <a href="#contact" class="block rounded-full bg-white/5 px-4 py-2 font-medium ring-1 ring-white/10 transition hover:bg-white/10">Contact</a>
+          </nav>
         </div>
       </div>
-    </div>
-  </nav>
+    </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Available for freelance work</div>
-          <h1>
-            I build <span class="gradient-text">beautiful, responsive, eye-catching</span> websites.
+    <section id="home" class="relative">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+        <div class="relative z-10">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-200 shadow-lg shadow-cyan-950/20">
+            <span class="h-2 w-2 rounded-full bg-cyan-300"></span>
+            Available for collaboration
+          </div>
+
+          <h1 class="max-w-4xl text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">
+            I create <span class="bg-gradient-to-r from-white via-brand-200 to-cyan-200 bg-clip-text text-transparent">smart systems</span> and beautiful digital experiences.
           </h1>
-          <p>
-            I am a web designer and front-end developer creating clean portfolio sites, modern landing pages,
-            and attractive user-friendly web experiences that look great on desktop, tablet, and mobile.
+
+          <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            I’m <span class="font-semibold text-white">Yousuf Shohag</span>, a Coordinator at <span class="font-semibold text-white">SiSCOTEK</span> with a Bachelor of Science degree from Uttara University. I coordinate projects and initiatives while also building Laravel applications, crafting graphics, and designing modern Figma interfaces.
           </p>
 
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">See My Projects</a>
-            <a href="#contact" class="btn btn-secondary">Hire Me</a>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="rounded-full bg-gradient-to-r from-brand-500 to-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-xl shadow-brand-900/30 transition hover:-translate-y-0.5">View Projects</a>
+            <a href="#contact" class="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10">Hire Me</a>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat glass">
-              <h3>10+</h3>
-              <p>Creative designs</p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-3">
+            <div class="glass rounded-3xl p-5 shadow-2xl shadow-slate-950/20">
+              <p class="text-2xl font-extrabold">4+</p>
+              <p class="mt-1 text-sm text-slate-300">Laravel projects</p>
             </div>
-            <div class="stat glass">
-              <h3>100%</h3>
-              <p>Responsive layout</p>
+            <div class="glass rounded-3xl p-5 shadow-2xl shadow-slate-950/20">
+              <p class="text-2xl font-extrabold">3 in 1</p>
+              <p class="mt-1 text-sm text-slate-300">Coordinator, developer, designer</p>
             </div>
-            <div class="stat glass">
-              <h3>Fast</h3>
-              <p>GitHub Pages ready</p>
+            <div class="glass rounded-3xl p-5 shadow-2xl shadow-slate-950/20">
+              <p class="text-2xl font-extrabold">B.Sc</p>
+              <p class="mt-1 text-sm text-slate-300">Uttara University</p>
             </div>
           </div>
         </div>
 
-        <div class="hero-card glass">
-          <div class="profile-box">
-            <img class="profile-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Profile photo" />
-            <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Siscotek</h2>
-            <p style="margin-bottom: 14px;">Web Designer • Frontend Developer • Laravel Project Showcase</p>
-            <div class="badge-row">
-              <span class="badge">HTML</span>
-              <span class="badge">CSS</span>
-              <span class="badge">JavaScript</span>
-              <span class="badge">GitHub Pages</span>
+        <div class="relative z-10 animate-floaty">
+          <div class="glass relative overflow-hidden rounded-[32px] p-6 shadow-2xl shadow-slate-950/30 sm:p-8">
+            <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-400/20 blur-3xl"></div>
+            <div class="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-cyan-300/20 blur-3xl"></div>
+
+            <div class="relative">
+              <div class="flex items-center gap-4">
+                <div class="flex h-20 w-20 items-center justify-center rounded-[28px] bg-gradient-to-br from-brand-400 to-cyan-300 text-2xl font-black text-slate-950 shadow-xl shadow-brand-700/20">YS</div>
+                <div>
+                  <h2 class="text-2xl font-bold">Yousuf Shohag</h2>
+                  <p class="text-sm font-medium text-cyan-200">Coordinator at SiSCOTEK</p>
+                </div>
+              </div>
+
+              <p class="mt-6 text-slate-300">
+                Dedicated to organized execution, collaborative teamwork, Laravel-based solution development, and polished creative design.
+              </p>
+
+              <div class="mt-8 space-y-4">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Education</p>
+                  <p class="mt-2 font-semibold text-white">Bachelor of Science, Uttara University</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Focus Areas</p>
+                  <p class="mt-2 font-semibold text-white">Project Coordination, Laravel Development, Graphics & Figma Design</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Work Style</p>
+                  <p class="mt-2 font-semibold text-white">Collaborative, detail-oriented, and solution-focused</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+  </div>
 
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">About me</div>
-          <h2>Modern design with a clean personal brand.</h2>
-          <p>
-            This portfolio is made as a single HTML file, so it is easy to upload to GitHub Pages.
-            You can use it to showcase your skills, your Laravel projects, screenshots, GitHub repository links,
-            and live demo buttons.
-          </p>
+  <main>
+    <section id="about" class="py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between reveal">
+          <div>
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">About Me</p>
+            <h2 class="text-3xl font-black sm:text-4xl">Blending management, development, and design</h2>
+          </div>
+          <p class="max-w-2xl text-slate-300">I help teams move ideas into action with coordinated planning, technical development, and creative design execution.</p>
         </div>
 
-        <div class="about-grid">
-          <div class="info-card glass">
-            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Who I Am</h3>
-            <p>
-              I create visually strong websites with smooth spacing, bold typography, soft glass effects,
-              and responsive sections that feel modern and premium.
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="glass reveal rounded-[28px] p-6 sm:p-8">
+            <p class="leading-8 text-slate-300">
+              In my role at SiSCOTEK, I coordinate projects and initiatives across the organization, helping teams stay aligned and productive. I bring structure to workflows, support progress tracking, and contribute to successful execution through clear communication and attention to detail.
             </p>
-            <div class="info-list">
-              <div class="info-item"><span>Name</span><span>Siscotek</span></div>
-              <div class="info-item"><span>Email</span><span>siscotech.bd@gmail.com</span></div>
-              <div class="info-item"><span>Role</span><span>Web Designer & Developer</span></div>
-              <div class="info-item"><span>Speciality</span><span>Portfolio & Landing Page Design</span></div>
-            </div>
-          </div>
-
-          <div class="info-card glass">
-            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Why this design works</h3>
-            <p>
-              It is mobile-friendly, attractive, easy to customize, and perfect for free deployment on GitHub Pages.
-              You only need to edit text, links, images, and project details.
+            <p class="mt-5 leading-8 text-slate-300">
+              Beyond coordination, I have developed several Laravel projects including <span class="font-semibold text-white">Project Management</span>, <span class="font-semibold text-white">Hospital Management</span>, and <span class="font-semibold text-white">E-commerce systems</span>. I also work in <span class="font-semibold text-white">graphic design</span> and <span class="font-semibold text-white">Figma design</span>, giving me a balanced mix of logic and creativity.
             </p>
-            <div class="badge-row" style="margin-top: 22px;">
-              <span class="badge">One file setup</span>
-              <span class="badge">Easy editing</span>
-              <span class="badge">Fast loading</span>
-              <span class="badge">Portfolio ready</span>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">Project Coordination</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">Laravel</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">Graphics Design</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">Figma UI Design</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">Team Collaboration</span>
+            </div>
+          </div>
+
+          <div class="grid gap-4 reveal">
+            <div class="glass rounded-[28px] p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200">Current Role</p>
+              <h3 class="mt-3 text-xl font-bold">Coordinator at SiSCOTEK</h3>
+              <p class="mt-3 text-slate-300">Coordinating various projects and initiatives while maintaining organized communication and delivery flow.</p>
+            </div>
+            <div class="glass rounded-[28px] p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200">Development</p>
+              <h3 class="mt-3 text-xl font-bold">Laravel Application Builder</h3>
+              <p class="mt-3 text-slate-300">Developing management-focused web applications that improve operations and user experience.</p>
+            </div>
+            <div class="glass rounded-[28px] p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200">Design</p>
+              <h3 class="mt-3 text-xl font-bold">Graphic & Figma Designer</h3>
+              <p class="mt-3 text-slate-300">Creating modern visuals, interface concepts, and clean presentation materials with attention to detail.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">My skills</div>
-          <h2>Services and technologies I use.</h2>
-          <p>
-            You can edit these cards and replace them with your real skills, tools, and services.
-          </p>
+    <section id="projects" class="py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between reveal">
+          <div>
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">Projects</p>
+            <h2 class="text-3xl font-black sm:text-4xl">Some work I’ve built</h2>
+          </div>
+          <p class="max-w-2xl text-slate-300">Practical Laravel systems and creative work that reflect my technical ability and design sense.</p>
         </div>
 
-        <div class="grid-3">
-          <div class="skill-card glass">
-            <div class="skill-icon">H</div>
-            <h3>HTML & CSS</h3>
-            <p>I build clean layouts, responsive sections, smooth spacing, and modern visual styles.</p>
-          </div>
-
-          <div class="skill-card glass">
-            <div class="skill-icon">J</div>
-            <h3>JavaScript UI</h3>
-            <p>I create interactive front-end features that improve user experience and engagement.</p>
-          </div>
-
-          <div class="skill-card glass">
-            <div class="skill-icon">L</div>
-            <h3>Laravel Projects</h3>
-            <p>I can showcase Laravel work with screenshots, GitHub code links, and live demo buttons.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Featured work</div>
-          <h2>Projects that stand out.</h2>
-          <p>
-            Replace these sample cards with your own work. For Laravel projects, add a screenshot, a description,
-            a GitHub link, and a live demo link hosted somewhere else.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="project-card glass">
-            <div class="project-thumb">01</div>
-            <h3>Personal Portfolio</h3>
-            <p>A premium-looking responsive personal website designed for GitHub Pages with strong visual impact.</p>
-            <div class="project-tags">
-              <span>Responsive</span>
-              <span>Portfolio</span>
-              <span>GitHub Pages</span>
-            </div>
-            <div class="project-links">
-              <a href="#">Live Preview</a>
-              <a href="#">Source Code</a>
+        <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="glass reveal group rounded-[28px] p-6 transition duration-300 hover:-translate-y-2 hover:border-brand-300/30">
+            <div class="mb-4 inline-flex rounded-2xl bg-brand-500/15 px-4 py-2 text-sm font-semibold text-brand-200">01</div>
+            <h3 class="text-xl font-bold">Project Management</h3>
+            <p class="mt-3 text-slate-300">A Laravel solution for planning tasks, tracking progress, and improving workflow management.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Laravel</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Admin Panel</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Dashboard</span>
             </div>
           </article>
 
-          <article class="project-card glass">
-            <div class="project-thumb">02</div>
-            <h3>Laravel Admin Project</h3>
-            <p>A Laravel-based dashboard project shown in the portfolio using screenshots, features, and repository links.</p>
-            <div class="project-tags">
-              <span>Laravel</span>
-              <span>Dashboard</span>
-              <span>PHP</span>
-            </div>
-            <div class="project-links">
-              <a href="#">Demo Link</a>
-              <a href="#">GitHub Repo</a>
+          <article class="glass reveal group rounded-[28px] p-6 transition duration-300 hover:-translate-y-2 hover:border-brand-300/30">
+            <div class="mb-4 inline-flex rounded-2xl bg-emerald-500/15 px-4 py-2 text-sm font-semibold text-emerald-200">02</div>
+            <h3 class="text-xl font-bold">Hospital Management</h3>
+            <p class="mt-3 text-slate-300">A web application designed to streamline hospital operations, records, and service coordination.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Management</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Operations</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Laravel</span>
             </div>
           </article>
 
-          <article class="project-card glass">
-            <div class="project-thumb">03</div>
-            <h3>Business Landing Page</h3>
-            <p>A sharp and modern landing page with clear sections, call-to-action buttons, and mobile-first structure.</p>
-            <div class="project-tags">
-              <span>Landing Page</span>
-              <span>UI Design</span>
-              <span>Frontend</span>
+          <article class="glass reveal group rounded-[28px] p-6 transition duration-300 hover:-translate-y-2 hover:border-brand-300/30">
+            <div class="mb-4 inline-flex rounded-2xl bg-pink-500/15 px-4 py-2 text-sm font-semibold text-pink-200">03</div>
+            <h3 class="text-xl font-bold">E-commerce</h3>
+            <p class="mt-3 text-slate-300">An online shopping platform focused on product display, customer flow, and store management.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Storefront</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Orders</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Laravel</span>
             </div>
-            <div class="project-links">
-              <a href="#">View Project</a>
-              <a href="#">More Details</a>
+          </article>
+
+          <article class="glass reveal group rounded-[28px] p-6 transition duration-300 hover:-translate-y-2 hover:border-brand-300/30">
+            <div class="mb-4 inline-flex rounded-2xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">04</div>
+            <h3 class="text-xl font-bold">Graphics & Figma</h3>
+            <p class="mt-3 text-slate-300">Creative visual work, branding assets, and UI concepts for modern digital presentation.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Figma</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Branding</span>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">Graphics</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Get in touch</div>
-          <h2>Let’s build something impressive.</h2>
-          <p>
-            Add your email, GitHub, Facebook, LinkedIn, WhatsApp, or any other contact link here.
-          </p>
+    <section id="skills" class="py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between reveal">
+          <div>
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">Skills</p>
+            <h2 class="text-3xl font-black sm:text-4xl">What I can help with</h2>
+          </div>
+          <p class="max-w-2xl text-slate-300">A flexible set of technical, creative, and coordination skills for modern teams and businesses.</p>
         </div>
 
-        <div class="contact-wrap">
-          <div class="contact-card glass">
-            <h3>Contact Information</h3>
-            <div class="contact-list">
-              <div class="contact-item">
-                <strong>Email</strong>
-                <p>siscotech.bd@gmail.com</p>
-              </div>
-              <div class="contact-item">
-                <strong>GitHub</strong>
-                <p>github.com/yourusername</p>
-              </div>
-              <div class="contact-item">
-                <strong>Location</strong>
-                <p>Bangladesh</p>
-              </div>
-            </div>
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div class="glass reveal rounded-[28px] p-6">
+            <h3 class="text-xl font-bold">Project Coordination</h3>
+            <p class="mt-3 text-slate-300">Managing tasks, supporting communication, following up on progress, and improving collaboration across teams.</p>
           </div>
+          <div class="glass reveal rounded-[28px] p-6">
+            <h3 class="text-xl font-bold">Laravel Development</h3>
+            <p class="mt-3 text-slate-300">Developing practical web applications tailored to management, operations, and business needs.</p>
+          </div>
+          <div class="glass reveal rounded-[28px] p-6">
+            <h3 class="text-xl font-bold">UI/UX & Figma Design</h3>
+            <p class="mt-3 text-slate-300">Designing user-friendly interfaces, wireframes, and polished visual layouts with a modern feel.</p>
+          </div>
+          <div class="glass reveal rounded-[28px] p-6">
+            <h3 class="text-xl font-bold">Graphic Design</h3>
+            <p class="mt-3 text-slate-300">Creating clean and attractive visuals for digital use, branding, presentations, and promotional content.</p>
+          </div>
+          <div class="glass reveal rounded-[28px] p-6">
+            <h3 class="text-xl font-bold">Problem Solving</h3>
+            <p class="mt-3 text-slate-300">Combining technical understanding and attention to detail to solve workflow and communication challenges.</p>
+          </div>
+          <div class="glass reveal rounded-[28px] p-6">
+            <h3 class="text-xl font-bold">Team Collaboration</h3>
+            <p class="mt-3 text-slate-300">Working closely with teams to support successful outcomes through dedication and clear coordination.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="contact-card glass">
-            <h3>Quick Links</h3>
-            <p>
-              Connect with me for portfolio websites, landing pages, frontend design work, or project showcase pages.
-            </p>
-            <div class="contact-links">
-              <a href="mailto:siscotech.bd@gmail.com">Send Email</a>
-              <a href="https://github.com/">GitHub</a>
-              <a href="#projects">My Projects</a>
-              <a href="#home">Back to Top</a>
-            </div>
+    <section id="contact" class="pb-16 pt-8 sm:pb-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-r from-brand-500/15 via-white/5 to-cyan-400/10 p-8 shadow-2xl shadow-slate-950/20 sm:p-10 lg:flex lg:items-center lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">Contact</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Let’s build something meaningful together</h2>
+            <p class="mt-4 text-slate-300">I’m available for project coordination, Laravel web development, UI/UX design, and graphic design work.</p>
+          </div>
+          <div class="mt-8 lg:mt-0 lg:pl-8">
+            <a href="mailto:your-email@example.com" class="inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 shadow-xl transition hover:-translate-y-0.5">Send Email</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Siscotek. Built for GitHub Pages.</p>
+  <footer class="border-t border-white/10 py-8 text-center text-sm text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      © 2026 Yousuf Shohag. Built with Tailwind CSS for GitHub Pages.
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>

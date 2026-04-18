@@ -1,9 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yousuf Patwari Shohag | Portfolio</title>
+  <link rel="icon" type="image/png" href="Yousuf Pass 2.jpg">
   <meta name="description" content="Portfolio of Yousuf Patwari Shohag, Coordinator at SiSCOTEK, Laravel Developer, Graphics Designer, and Figma Designer." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -187,8 +190,18 @@
           </p>
 
           <div class="mt-8 flex flex-wrap gap-4">
-            <a href="#projects" class="rounded-full bg-gradient-to-r from-brand-500 to-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-xl shadow-brand-900/30 transition hover:-translate-y-0.5">View Projects</a>
-            <a href="#contact" class="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10">Hire Me</a>
+            <!-- <a href="#projects" class="rounded-full bg-gradient-to-r from-brand-500 to-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-xl shadow-brand-900/30 transition hover:-translate-y-0.5">
+              View Projects
+            </a> -->
+
+            <a href="#contact" class="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10">
+              Hire Me
+            </a>
+
+            <!-- Download Resume Button -->
+            <a href="resume.pdf" download class="rounded-full border border-cyan-300/30 bg-cyan-400/10 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:-translate-y-0.5 hover:bg-cyan-400/20">
+              Download Resume
+            </a>
           </div>
 
           <div class="mt-10 grid gap-4 sm:grid-cols-3">
@@ -402,13 +415,29 @@
             <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">Contact</p>
             <h2 class="mt-3 text-3xl font-black sm:text-4xl">Let’s build something meaningful together</h2>
             <p class="mt-4 text-slate-300">I’m available for project coordination, Laravel web development, UI/UX design, and graphic design work.</p>
+            <p class="mt-4 text-slate-300">Phone Number: +8801608550445 <br> Email Address: yousufshohag90@gmail.com </p>
+            
           </div>
           <div class="mt-8 lg:mt-0 lg:pl-8">
-            <a href="mailto:your-email@example.com" class="inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 shadow-xl transition hover:-translate-y-0.5">Send Email</a>
+            <form id="contact-form" class="space-y-4 w-full max-w-md">
+  <input type="text" name="name" placeholder="Your Name" required class="w-full rounded-xl bg-white/5 px-4 py-3 text-white" />
+
+  <input type="email" name="email" placeholder="Your Email" required class="w-full rounded-xl bg-white/5 px-4 py-3 text-white" />
+
+  <textarea name="message" rows="4" placeholder="Your Message" required class="w-full rounded-xl bg-white/5 px-4 py-3 text-white"></textarea>
+
+  <button type="submit" class="w-full rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950">
+    Send Message
+  </button>
+</form>
+
+<p id="status" class="mt-3 text-green-400"></p>
           </div>
+          
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="border-t border-white/10 py-8 text-center text-sm text-slate-400">
@@ -467,5 +496,25 @@ function openMenu() {
     }
   });
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("jVaF34-nT4Vc4N6Id"); // from EmailJS
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_zjxshpf", "template_9afw1yo", this)
+    .then(function() {
+      document.getElementById("status").innerText = "✅ Message sent successfully!";
+    }, function(error) {
+      document.getElementById("status").innerText = "❌ Failed to send message";
+      console.log(error);
+    });
+});
+</script>
 </body>
 </html>
